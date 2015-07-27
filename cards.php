@@ -35,13 +35,13 @@ function _sbcg_cards_card( $atts, $content = '' ) {
   $out = sprintf( "%s<div class=\"card-content\">%s%s</div>", 
           ( $args['icon'] !== "" && $is_bgimg === false ) ? "<svg class=\"card-icon\" role=\"presentation\"><use xlink:href=\"" . get_stylesheet_directory_uri() . "/assets/images/sprite.symbol.svg#{$args['icon']}\" /></svg>" : "",
           ( $args['title'] !== "" ) ? "<h4 class=\"card-title\">{$args['title']}</h4>" : "",
-          ( $is_bgimg === false ) ? $content : ''
+          $content
         );  
         
   $out = sprintf( "\n<div class=\"card%s\"%s>%s</div>\n",
           ( $is_bgimg !== false ) ? " card-bg" : "",
-          ( !empty($background) ) ? " style=\"background:{$background}\"" : "",
-          ($args['link'] !== "") ? "<a href=\"{$args['link']}\">{$out}</a>" : $out
+          ( !empty($background) ) ? " style=\"background-image:linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)),{$background}\"" : "",
+          ($args['link'] !== "") ? "<a href=\"{$args['link']}\" class=\"card-link\">{$out}</a>" : $out
         );
             
   return $out;
